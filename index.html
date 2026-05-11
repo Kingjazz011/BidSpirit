@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BidSpirit - Fine Art & Antiques Marketplace</title>
+    
+    <!-- Link to external CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ==================== HEADER SECTION ==================== -->
+    <!-- Contains logo, navigation, and personalized user welcome -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- NAME PROMPT MODAL: Shows on first visit to collect user's name -->
+                <div id="namePromptOverlay" class="name-prompt-overlay">
+                    <div class="name-prompt-box">
+                        <h3>Welcome to BidSpirit</h3>
+                        <p>Please enter your first name to personalize your experience:</p>
+                        <input type="text" id="initialNameInput" placeholder="Your First Name">
+                        <button id="saveNameBtn">Enter Marketplace</button>
+                    </div>
+                </div>
+
+                <!-- LOGO: BidSpirit branding with icon -->
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <div>
+                        <h1 class="logo-text">BidSpirit</h1>
+                        <p class="logo-subtitle">Fine Art & Antiques</p>
+                    </div>
+                </div>
+
+                <!-- DESKTOP NAVIGATION: Main menu for larger screens -->
+                <nav class="desktop-nav">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#categories" class="nav-link">Categories</a>
+                    <a href="#auctions" class="nav-link">Auctions</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#sitemap" class="nav-link">Sitemap</a>
+                </nav>
+
+                <!-- USER WELCOME: Displays personalized greeting with user's name -->
+                <div class="header-info">
+                    <div class="visitor-counter">
+                        <span class="visitor-icon">👥</span>
+                        <span id="visitorCount">0</span>
+                    </div>
+                    <div class="welcome-text">
+                        <p class="welcome-name">Welcome, <span id="userName">Guest</span></p>
+                    </div>
+                </div>
+
+                <!-- MOBILE MENU BUTTON: Toggle navigation on small screens -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span class="menu-icon">☰</span>
+                    <span class="close-icon">✕</span>
+                </button>
+            </div>
+
+            <!-- MOBILE NAVIGATION: Menu for smaller screens -->
+            <nav class="mobile-nav" id="mobileNav">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#categories" class="mobile-nav-link">Categories</a>
+                <a href="#auctions" class="mobile-nav-link">Auctions</a>
+                <a href="#about" class="mobile-nav-link">About</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+                <a href="#sitemap" class="mobile-nav-link">Sitemap</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <!-- Large banner with background image and call-to-action -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <img src="https://images.unsplash.com/photo-1763371045922-6c4bcf457b8b?w=1200" alt="Elegant Gallery" class="hero-image">
+        <div class="hero-content">
+            <h2 class="hero-title animate-fade-in">Discover Timeless Treasures</h2>
+            <p class="hero-subtitle animate-fade-in">World-Leading Online Marketplace for Fine Art & Antiques</p>
+            <button class="hero-btn animate-fade-in">Explore Auctions</button>
+        </div>
+    </section>
+
+    <!-- ==================== CATEGORIES SECTION ==================== -->
+    <!-- REQ #2: Displays product categories with sample images -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Browse by Category</h2>
+            <!-- Grid container populated by JavaScript -->
+            <div class="category-grid" id="categoryGrid"></div>
+        </div>
+    </section>
+
+    <!-- ==================== POPULAR ITEMS SECTION ==================== -->
+    <!-- REQ #4: Popular items from the marketplace -->
+    <section id="auctions" class="popular-items">
+        <div class="container">
+            <h2 class="section-title">Popular Items</h2>
+            <!-- Grid container populated by JavaScript -->
+            <div class="product-grid" id="popularGrid"></div>
+        </div>
+    </section>
+
+    <!-- ==================== UPCOMING AUCTIONS SECTION ==================== -->
+    <!-- REQ #4: Shows items coming soon to auction -->
+    <section id="upcoming" class="upcoming-auctions">
+        <div class="container">
+            <h2 class="section-title">Upcoming Online Auctions</h2>
+            <!-- Grid container populated by JavaScript -->
+            <div class="product-grid" id="upcomingGrid"></div>
+        </div>
+    </section>
+
+    <!-- ==================== SPONSORED AUCTIONS SECTION ==================== -->
+    <!-- REQ #4: Featured sponsored auction items -->
+    <section id="sponsored" class="sponsored-auctions">
+        <div class="container">
+            <h2 class="section-title">Sponsored Auctions</h2>
+            <!-- Grid container populated by JavaScript -->
+            <div class="product-grid" id="sponsoredGrid"></div>
+        </div>
+    </section>
+
+    <!-- ==================== COMPLETED AUCTIONS SECTION ==================== -->
+    <!-- REQ #4: Previously completed auctions for reference -->
+    <section id="completed" class="completed-auctions">
+        <div class="container">
+            <h2 class="section-title">Completed Auctions</h2>
+            <!-- Grid container populated by JavaScript -->
+            <div class="product-grid" id="completedGrid"></div>
+        </div>
+    </section>
+
+    <!-- ==================== GALLERY SECTION ==================== -->
+    <!-- REQ #7: Gallery showcase of all items -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <!-- Grid container populated by JavaScript -->
+            <div class="product-grid" id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <!-- REQ #8: Company information and contact details -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title">About BidSpirit</h2>
+                    <p class="about-text">
+                        BidSpirit is the world's leading online marketplace for fine art, antiques, furniture, and collectibles.
+                        We revolutionize traditional auctions by bringing the excitement and sophistication of live bidding to a
+                        global digital platform.
+                    </p>
+                    <p class="about-text">
+                        With over 25,000 satisfied collectors and decades of combined expertise,
+                        we provide authentication, provenance research, and secure transactions for every piece.
+                    </p>
+                    <!-- CONTACT INFO: Email, Phone, Address -->
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">✉</span>
+                            <span>contact@bidspirit.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>145 Madison Avenue, New York, NY 10016</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1761933296161-073ce9f8ab36?w=600" alt="About BidSpirit">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT/FEEDBACK SECTION ==================== -->
+    <!-- REQ #6: Feedback form for user submissions -->
+    <section id="contact" class="feedback-section">
+        <div class="container">
+            <h2 class="section-title">We Value Your Feedback</h2>
+            <div class="feedback-form-container" id="feedbackContainer">
+                <form class="feedback-form" id="feedbackForm">
+                    <!-- Two-column form row for name and email -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+                    </div>
+                    <!-- Subject dropdown -->
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="auction">Auction Questions</option>
+                            <option value="authentication">Authentication Services</option>
+                            <option value="shipping">Shipping & Delivery</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <!-- Message textarea -->
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Tell us what you think..."></textarea>
+                    </div>
+                    <!-- Submit button -->
+                    <button type="submit" class="submit-btn">
+                        <span>✉</span> Submit Feedback
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SITEMAP SECTION ==================== -->
+    <!-- REQ #7: Website structure and navigation overview -->
+    <section id="sitemap" class="sitemap">
+        <div class="container">
+            <h2 class="section-title">Sitemap</h2>
+            <div class="sitemap-content">
+                <div class="sitemap-column">
+                    <h3>Main Pages</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="sitemap-column">
+                    <h3>Auction Sections</h3>
+                    <ul>
+                        <li><a href="#auctions">Popular Items</a></li>
+                        <li><a href="#sponsored">Sponsored Auctions</a></li>
+                        <li><a href="#upcoming">Upcoming Auctions</a></li>
+                        <li><a href="#completed">Completed Auctions</a></li>
+                    </ul>
+                </div>
+                <div class="sitemap-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#categories">Fine Art</a></li>
+                        <li><a href="#categories">Antiques</a></li>
+                        <li><a href="#categories">Furniture</a></li>
+                        <li><a href="#categories">Collectibles</a></li>
+                    </ul>
+                </div>
+                <div class="sitemap-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Feedback</a></li>
+                        <li><a href="#about">Organization Info</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER SECTION ==================== -->
+    <!-- Contains copyright, links, and contact information -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">BidSpirit</h3>
+                    <p class="footer-text">Your trusted partner in fine art and antiques acquisition.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#auctions">Auctions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-links">
+                        <li>contact@bidspirit.com</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li>New York, NY 10016</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BidSpirit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SCROLLING TICKER ==================== -->
+    <div class="ticker-wrap">
+        <div id="ticker" class="ticker-content">Initializing tracker...</div>
+    </div>
+
+    <!-- ==================== PRODUCT DETAIL MODAL ==================== -->
+    <!-- REQ #3: Pop-up window showing detailed product information -->
+    <div class="modal" id="productModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <!-- Modal body populated dynamically by JavaScript -->
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

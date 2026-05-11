@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "title": "Stormy Landscape Oil Painting",
+    "category": "Fine Art",
+    "basePrice": 12500,
+    "image": "https://images.unsplash.com/photo-1763336320333-7942db83c8af?w=600",
+    "description": "A dramatic 19th-century oil painting depicting a stormy coastal scene with remarkable atmospheric depth.",
+    "artist": "Unknown Master",
+    "year": "1880s",
+    "dimensions": "36\" × 28\"",
+    "condition": "Excellent",
+    "provenance": "European private collection"
+  },
+  {
+    "id": 2,
+    "title": "Ornate Crystal Chandelier Room",
+    "category": "Fine Art",
+    "basePrice": 45000,
+    "image": "https://images.unsplash.com/photo-1775346098886-72ab6697b331?w=600",
+    "description": "An exquisite collection of 18th-century paintings and sculptures in an ornate period room with original crystal chandelier.",
+    "year": "1750-1780",
+    "dimensions": "Full room installation",
+    "condition": "Museum quality",
+    "provenance": "French aristocratic estate"
+  },
+  {
+    "id": 3,
+    "title": "Classical Portrait",
+    "category": "Fine Art",
+    "basePrice": 18900,
+    "image": "https://images.unsplash.com/photo-1767256483533-3fcda3251a9a?w=600",
+    "description": "A masterful classical portrait showcasing exceptional technique and historical significance.",
+    "artist": "National Gallery Collection",
+    "year": "Early 1800s",
+    "dimensions": "42\" × 32\"",
+    "condition": "Restored",
+    "provenance": "National Gallery of Art"
+  },
+  {
+    "id": 4,
+    "title": "Antique Ornate Mirror",
+    "category": "Antiques",
+    "basePrice": 8500,
+    "image": "https://images.unsplash.com/photo-1767083640949-7643335ec735?w=600",
+    "description": "An elegant Victorian-era ornate mirror reflecting pristine vintage aesthetics, exemplifying period craftsmanship.",
+    "year": "Victorian Era, 1890s",
+    "dimensions": "72\" × 48\"",
+    "condition": "Excellent original condition",
+    "provenance": "English manor estate"
+  },
+  {
+    "id": 5,
+    "title": "Illuminated Glass Cabinet",
+    "category": "Furniture",
+    "basePrice": 6800,
+    "image": "https://images.unsplash.com/photo-1767415414579-f83279885a6e?w=600",
+    "description": "A stunning ornate cabinet with glass doors, beautifully crafted in the Art Nouveau style.",
+    "year": "Art Nouveau Period",
+    "dimensions": "84\" × 36\" × 18\"",
+    "condition": "Excellent",
+    "provenance": "European collection"
+  },
+  {
+    "id": 6,
+    "title": "Vintage Card Table",
+    "category": "Furniture",
+    "basePrice": 4200,
+    "image": "https://images.unsplash.com/photo-1773855742950-95746256b08e?w=600",
+    "description": "Exquisite wooden card table with original accessories from the 1920s era.",
+    "year": "1920s",
+    "dimensions": "36\" × 36\" × 30\"",
+    "condition": "Very good",
+    "provenance": "Private gentleman's club"
+  },
+  {
+    "id": 7,
+    "title": "Collection of Ceramic Vases",
+    "category": "Collectibles",
+    "basePrice": 3500,
+    "image": "https://images.unsplash.com/photo-1767039770798-89ed11c842d6?w=600",
+    "description": "A diverse collection of ceramic vases and pottery pieces from different periods and styles.",
+    "year": "Various periods",
+    "dimensions": "Various sizes",
+    "condition": "Good to excellent",
+    "provenance": "Estate collection"
+  },
+  {
+    "id": 8,
+    "title": "Decorative Pottery Collection",
+    "category": "Collectibles",
+    "basePrice": 2900,
+    "image": "https://images.unsplash.com/photo-1767039549826-58890cdccf19?w=600",
+    "description": "Beautiful collection of decorative ceramic vases and pottery showcasing various artistic styles.",
+    "year": "19th-20th century",
+    "dimensions": "Various",
+    "condition": "Excellent",
+    "provenance": "Museum deaccession"
+  }
+]
