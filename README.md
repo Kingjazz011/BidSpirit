@@ -44,9 +44,6 @@ Project Structure
 *   `script.js` - Application logic and API integrations.
 *   `data.json` - Product database.
 
-License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contributing
 
