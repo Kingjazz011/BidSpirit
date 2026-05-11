@@ -26,11 +26,11 @@ Because this project uses the JavaScript `fetch` API to load product data, you m
 Running Locally
 1.  Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/bid-spirit-marketplace.git
+    git clone https://github.com/Kingjazz011/BidSpirit.git
     ```
 2.  Navigate to the directory:**
     ```bash
-    cd bid-spirit-marketplace
+    cd BidSpirit
     ```
 3.  Start a local server:
     *   If using VS Code, install the **Live Server** extension and click "Go Live".
