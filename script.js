@@ -422,7 +422,6 @@ function openModal(product) {
             </div>
             <div class="modal-actions">
                 <button class="modal-btn primary" id="placeBidBtn">Place Bid</button>
-                <button class="modal-btn secondary">Add to Watchlist</button>
             </div>
             <div class="bid-success" id="bidSuccess"></div>
         </div>
