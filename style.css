@@ -453,6 +453,29 @@ header {
     color: var(--gold);
 }
 
+.category-card.active {
+    border: 2px solid var(--gold);
+}
+
+.category-results {
+    margin-top: 2.5rem;
+}
+
+.category-results-title {
+    text-align: center;
+    font-size: 1.9rem;
+    color: var(--navy);
+    margin-bottom: 2rem;
+}
+
+.no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #666;
+    padding: 1.5rem;
+    font-size: 1rem;
+}
+
 /* ==================== PRODUCT SECTIONS ==================== */
 /* Styling for all auction and product display sections */
 
@@ -1144,8 +1167,22 @@ header {
         display: block;
     }
 
+    .header-content {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
     .header-info {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.4rem;
+    }
+
+    .visitor-counter,
+    .welcome-text {
+        width: 100%;
+        text-align: right;
     }
 
     .hero-title {

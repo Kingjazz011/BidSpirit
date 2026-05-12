@@ -51,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize mobile menu toggle
     initMobileMenu();
+
+    // Hook hero button to auctions section
+    initHeroButton();
     
     // REQ #6: Setup feedback form
     initFeedbackForm();
@@ -61,6 +64,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup scroll animations for page elements
     initScrollAnimations();
 });
+
+// ==================== HERO BUTTON HANDLER ==================== //
+function initHeroButton() {
+    const heroBtn = document.querySelector('.hero-btn');
+    if (!heroBtn) return;
+
+    heroBtn.addEventListener('click', () => {
+        const target = document.getElementById('auctions');
+        if (!target) return;
+
+        const headerHeight = document.getElementById('header').offsetHeight;
+        const targetPosition = target.offsetTop - headerHeight;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    });
+}
+
 
 // ==================== VISITOR COUNT HANDLER ==================== //
 function initVisitorCount() {
@@ -193,11 +212,51 @@ function initCategories() {
 function createCategoryCard(category, image) {
     const card = document.createElement('div');
     card.className = 'category-card';
+    card.dataset.category = category;
     card.innerHTML = `
         <img src="${image}" alt="${category}" class="category-image">
         <div class="category-name">${category}</div>
     `;
+
+    card.addEventListener('click', () => {
+        selectCategoryCategory(category, card);
+    });
+
     return card;
+}
+
+// ==================== CATEGORY ACTIONS ==================== //
+function selectCategoryCategory(category, activeCard) {
+    document.querySelectorAll('.category-card').forEach(card => card.classList.remove('active'));
+    if (activeCard) {
+        activeCard.classList.add('active');
+    }
+    showCategoryProducts(category);
+}
+
+function showCategoryProducts(category) {
+    const categoryResultsTitle = document.getElementById('categoryResultsTitle');
+    const categoryResultsGrid = document.getElementById('categoryResultsGrid');
+    if (!categoryResultsGrid || !categoryResultsTitle) return;
+
+    const matchingProducts = products.filter(product => product.category === category);
+    categoryResultsTitle.textContent = `${category} Auctions & Highlights`;
+    categoryResultsGrid.innerHTML = '';
+
+    if (!matchingProducts.length) {
+        categoryResultsGrid.innerHTML = `<p class="no-products">No products available in this category at the moment.</p>`;
+    } else {
+        matchingProducts.forEach(product => {
+            categoryResultsGrid.appendChild(createProductCard(product, false));
+        });
+    }
+
+    const categoryResultsSection = document.getElementById('categoryResults');
+    if (categoryResultsSection) {
+        const headerHeight = document.getElementById('header').offsetHeight;
+        const targetPosition = categoryResultsSection.offsetTop - headerHeight;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
 }
 
 // ==================== REQ #2, #4: PRODUCT INITIALIZATION ==================== //
