@@ -5,6 +5,10 @@
 // ==================== PRODUCT DATABASE ==================== //
 // REQ #2, #4: Product data is loaded from data.json
 let products = [];
+let state = {
+    location: 'Worldwide',
+    products: []
+};
 
 // Load product data from data.json
 function fetchProductData() {
@@ -36,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchProductData()
         .then(data => {
             products = data;
+            state.products = data;
             initCategories();
             initProducts();
         })
@@ -106,12 +111,15 @@ function initTicker() {
                 .then(res => res.json())
                 .then(data => {
                     userLocation = data.display_name || `${latitude.toFixed(2)}, ${longitude.toFixed(2)}`;
+                    state.location = userLocation;
                 })
                 .catch(() => {
                     userLocation = `Lat: ${latitude.toFixed(2)}, Lon: ${longitude.toFixed(2)}`;
+                    state.location = userLocation;
                 });
         }, () => {
             userLocation = "Location Access Denied";
+            state.location = userLocation;
         });
     } else {
         userLocation = "Geolocation Not Supported";
@@ -422,6 +430,7 @@ function openModal(product) {
             </div>
             <div class="modal-actions">
                 <button class="modal-btn primary" id="placeBidBtn">Place Bid</button>
+                <button class="modal-btn secondary" id="shippingBtn">Shipping Info</button>
             </div>
             <div class="bid-success" id="bidSuccess"></div>
         </div>
@@ -432,6 +441,10 @@ function openModal(product) {
     document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
 
     document.getElementById('placeBidBtn').addEventListener('click', () => handlePlaceBid(product));
+    const shippingBtn = document.getElementById('shippingBtn');
+    if (shippingBtn) {
+        shippingBtn.addEventListener('click', () => openShipping(product.id));
+    }
 }
 
 // Closes the product detail modal
@@ -605,4 +618,95 @@ function initScrollAnimations() {
     document.querySelectorAll('.category-card, .product-card').forEach(el => {
         observer.observe(el);
     });
+}
+
+function openShipping(id) {
+    const product = state.products.find(prod => prod.id === id) || products.find(prod => prod.id === id);
+    const modalBody = document.getElementById('modalBody');
+    if (!modalBody || !product) return;
+
+    modalBody.innerHTML = `
+        <div class="modal-image">
+            <img src="${product.image}" alt="${product.title}">
+        </div>
+        <div class="modal-details">
+            <div>
+                <span class="modal-category">Shipping & Delivery</span>
+                <h2 class="modal-title">Secure Checkout for ${product.title}</h2>
+                <p class="modal-price">$${product.basePrice.toLocaleString()}</p>
+            </div>
+            <div class="modal-section">
+                <p>Complete your purchase for <strong>${product.title}</strong>. Enter your shipping details below to confirm delivery arrangements.</p>
+            </div>
+            <form id="shipping-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shipName">Full Name</label>
+                        <input type="text" id="shipName" class="input-premium" required placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipEmail">Email Address</label>
+                        <input type="email" id="shipEmail" class="input-premium" required placeholder="Email Address">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shipPhone">Phone Number</label>
+                        <input type="tel" id="shipPhone" class="input-premium" required placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipCountry">Country</label>
+                        <input type="text" id="shipCountry" class="input-premium" required placeholder="Country" value="${state.location}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="shipAddress">Street Address</label>
+                    <input type="text" id="shipAddress" class="input-premium" required placeholder="Street Address">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shipCity">City</label>
+                        <input type="text" id="shipCity" class="input-premium" required placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipState">State/Province</label>
+                        <input type="text" id="shipState" class="input-premium" required placeholder="State/Province">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="shipZip">ZIP / Postal Code</label>
+                    <input type="text" id="shipZip" class="input-premium" required placeholder="ZIP / Postal Code">
+                </div>
+                <div class="form-group">
+                    <label for="shipMethod">Shipping Method</label>
+                    <select id="shipMethod" class="input-premium" required>
+                        <option>Standard Shipping (7-10 days) - Free</option>
+                        <option>Express Shipping (3-5 days) - $50</option>
+                        <option>Overnight Shipping (1-2 days) - $150</option>
+                    </select>
+                </div>
+                <button type="submit" class="modal-btn primary">Complete Purchase</button>
+            </form>
+        </div>
+    `;
+
+    const shippingForm = document.getElementById('shipping-form');
+    if (shippingForm) {
+        shippingForm.addEventListener('submit', confirmOrder);
+    }
+}
+
+function confirmOrder(e) {
+    e.preventDefault();
+    const modalBody = document.getElementById('modalBody');
+    if (!modalBody) return;
+
+    modalBody.innerHTML = `
+        <div class="text-center py-5">
+            <h2 class="mb-3">Purchase Confirmed!</h2>
+            <p class="mb-3">Thank you for your purchase. A confirmation email has been sent.</p>
+            <p style="color: var(--gray);">A specialized courier will contact you within 24 hours to arrange secure delivery to your location: ${state.location}.</p>
+            <button class="modal-btn primary" onclick="closeModal()">Continue Browsing</button>
+        </div>
+    `;
 }
